@@ -15,6 +15,5 @@ int prism_algo(vector<vector<pii> > &l,int n){
             }
         }
     }
-
     return ans;
 }
