@@ -9,7 +9,7 @@ void dfs(int node,int parent,int clr,map<int,int> &color,int *odd_cycle,vector<i
         }
     }
 }
-bool bipartite(vector<vector<int> > &l,int n){
+void bipartite(vector<vector<int> > &l,int n){
     map<int,int> color;
     int odd_cycle=0;
     vector<int> vis(n+1,0);
@@ -18,5 +18,12 @@ bool bipartite(vector<vector<int> > &l,int n){
             dfs(i,0,1,color,&odd_cycle,vis,l);
         }
     }
-    return (odd_cycle);
+
+    if(odd_cycle){
+        cout<<"Odd Cycle Detected";
+    }else{
+        for(int i=1;i<=n;i++){
+            cout<<color[i]+1<<" ";
+        }
+    }
 }
