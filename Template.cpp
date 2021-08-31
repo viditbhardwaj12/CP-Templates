@@ -12,7 +12,6 @@ using namespace __gnu_pbds;
 #define mp               make_pair
 #define pb               push_back
 #define popb             pop_back
-#define umap             unordered_map
 #define lb               lower_bound
 #define ub               upper_bound
 #define int              long long int
