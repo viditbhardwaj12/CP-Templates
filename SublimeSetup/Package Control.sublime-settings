@@ -1,0 +1,13 @@
+{
+	"bootstrapped": true,
+	"installed_packages":
+	[
+		"Package Control",
+		"Seti_UI",
+		"Seti_UX",
+		"Theme - Brogrammer",
+	],
+	"in_process_packages":
+	[
+	],
+}
