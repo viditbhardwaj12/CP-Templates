@@ -1,0 +1,10 @@
+[
+	{ "keys": ["ctrl+t"], "command": "new_file" },
+	{ "keys": ["ctrl+f1"], "command": "toggle_bookmark" },
+	{ "keys": ["ctrl+f2"], "command": "show_panel", "args": {"panel": "replace", "reverse": false} },
+	{ "keys": ["ctrl+shift+tab"], "command": "next_view_in_stack" },
+	{ "keys": ["ctrl+tab"], "command": "prev_view_in_stack" },
+	{ "keys": ["ctrl+i"], "command": "build" },
+	{ "keys": ["ctrl+shift+i"], "command": "build", "args": {"select": true} },
+	{ "keys": ["ctrl+b"], "command": "cancel_build" },
+]
