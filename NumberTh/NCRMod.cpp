@@ -13,7 +13,7 @@ int pow(int a,int b,int m){
     return ans;
 }
 int inv_mod(int a,int m){return pow(a,m-2,m);}
-int ncr(int n,int r,int m){
+int ncrMod(int n,int r,int m){
     if(n<r) return 0;
     return (fact[n]*inv_mod(fact[r],m)%m*inv_mod(fact[n-r],m)%m)%m;
 }
