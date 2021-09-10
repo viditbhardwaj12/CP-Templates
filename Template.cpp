@@ -29,9 +29,9 @@ using namespace __gnu_pbds;
 
 template<typename T>    // *s.find_by_order(idx) & s.order_of_key(val)
 using pbds=tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>; 
-typedef pair<int,int> pii;
-template<typename T> using max_pq=priority_queue<T>;
 template<typename T> using min_pq=priority_queue<T,vector<T>,greater<T> >;
+template<typename T> using max_pq=priority_queue<T>;
+typedef pair<int,int> pii;
 
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr<<"["<<#x<<"]"<<"->";_print(x);cerr<<endl;
