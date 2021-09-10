@@ -29,9 +29,9 @@ using namespace __gnu_pbds;
 
 template<typename T>    // *s.find_by_order(idx) & s.order_of_key(val)
 using pbds=tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>; 
-typedef priority_queue<int,vector<int>,greater<int> > min_pq;
-typedef priority_queue<int> max_pq;
 typedef pair<int,int> pii;
+template<typename T> using max_pq=priority_queue<T>;
+template<typename T> using min_pq=priority_queue<T,vector<T>,greater<T> >;
 
 #ifndef ONLINE_JUDGE
 #define debug(x) cerr<<"["<<#x<<"]"<<"->";_print(x);cerr<<endl;
@@ -68,9 +68,9 @@ SPD_emergency
 #ifndef ViditBhardwaj
     freopen("Debug.txt","w",stderr);
 #endif
-    
+
 TC{
-    
+        
 }
 
     return 0;
