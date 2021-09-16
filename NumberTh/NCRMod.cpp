@@ -1,7 +1,8 @@
 int fact[N];
-void get_fact(int n,int m){
+void get_fact(){
     fact[0]=1;
-    for (int i=1;i<=n;i++) fact[i]=(fact[i-1]*i)%m;
+    for(int i=1;i<N;i++) 
+        fact[i]=(fact[i-1]*i)%mod;
 }
 
 int pow(int a,int b,int m){
