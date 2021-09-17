@@ -1,3 +1,7 @@
+// works only on DAG(dir acyclic graph)
+// gives permutation of vertices where there is an edge from p[i] to p[j] and i<j
+// T:O(V+E) 
+
 void dfs_top(int prnt,vector<int> &path,vector<int> &vis,vector<vector<int> > &l){
     vis[prnt]=1;
     for(auto ch:l[prnt]){
