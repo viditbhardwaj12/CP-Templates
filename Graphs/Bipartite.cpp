@@ -1,29 +1,21 @@
-void dfs(int node,int parent,int clr,map<int,int> &color,int *odd_cycle,vector<int> &vis,vector<vector<int> > &l){
-    vis[node]=1;
-    color[node]=clr;
-    for(auto child:l[node]){
-        if(!vis[child]){
-            dfs(child,node,1-clr,color,odd_cycle,vis,l);
-        }else{
-            if(child!=parent && color[child]==clr) *odd_cycle=1;
-        }
-    }
-}
-void bipartite(vector<vector<int> > &l,int n){
-    map<int,int> color;
-    int odd_cycle=0;
-    vector<int> vis(n+1,0);
-    for(int i=1;i<=n;i++){
-        if(!vis[i]){
-            dfs(i,0,1,color,&odd_cycle,vis,l);
-        }
-    }
+// If the color of parent and child are same then return false else return true
+// vis is bool vertor
+// col is int vector
+// a,vis,col are defined globally
 
-    if(odd_cycle){
-        cout<<"Odd Cycle Detected";
-    }else{
-        for(int i=1;i<=n;i++){
-            cout<<color[i]+1<<" ";
-        }
-    }
+void dfs(ll pos,ll ok){
+	vis[pos]=1;
+	col[pos]=ok;
+
+	for(auto i:a[pos]){
+		if(!vis[i]){
+			if(dfs(i,1-ok))
+				return true;
+			else return false;
+		}
+		else if(col[pos]==col[i])
+			return false;
+	}
+
+	return true;
 }
