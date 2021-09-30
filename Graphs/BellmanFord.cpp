@@ -1,6 +1,6 @@
 vector<int> dist(N);
 void bellman_ford(vector<vector<pii> > &l,int n){
-    int neg_cycle=0,relax=n-1,node=0;
+    int neg_cycle=0,relax=n,node=0;
     fill(all(dist),inf);
     dist[1]=0;
     while(relax--){
