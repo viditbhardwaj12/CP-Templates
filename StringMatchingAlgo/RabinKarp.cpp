@@ -1,13 +1,7 @@
-#include<bits/stdc++.h>
-using namespace std;
-
-const int mod=(1e7+9),p=(31);
-int _pow(int a,int b){if(!b){return 1;}int ans=_pow(a,b/2);ans*=ans;if(b%2){return ans*=a;}return ans;}
-
-int add(int a,int b,int m){return (a+b)%m;}
-int mul(int a,int b,int m){return ((a%m)*(b%m))%m;}
-int sub(int a,int b,int m){return ((a-b)%m+m)%m;}
-
+// gives indx of all occurrences string 'str' in string 'pat'
+// T=O(|str|+|pat|)
+    
+const int p=31;
 int hashFunct(string str){
     int ans=0;
     for(int i=0;i<str.length();i++){
@@ -16,11 +10,7 @@ int hashFunct(string str){
     }
     return ans;
 }
-
-int main(){
-    
-    string str="abababbabab",pat="aba";
-
+vector<int> rabin_karp(string str,string pat){
     int pat_hash=hashFunct(pat);
     int n=str.size(),m=pat.size();
 
@@ -32,15 +22,15 @@ int main(){
         p_sum[i]=add(p_sum[i-1],p_sum[i],mod);
     }
 
+    vector<int> indx;
     for(int i=0;i+m-1<n;i++){
         int l=(i),r=(i+m-1);
         int curr_hash=p_sum[r];
         if(l) curr_hash=sub(curr_hash,p_sum[l-1],mod);
 
         if(curr_hash==mul(pat_hash,_pow(p,l),mod)){
-            cout<<l<<endl;
+            indx.pb(l);
         }
     }
-
-    return 0;
+    return indx;
 }
