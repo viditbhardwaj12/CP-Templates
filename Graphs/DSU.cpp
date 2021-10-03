@@ -1,3 +1,5 @@
+// T=O(nlog(n))
+    
 class DSU{
 public:
     int n,components;
