@@ -1,7 +1,7 @@
 // Dir or undir
 // Gives the shortest path between each pair of vertices i and j.
 // The graph may have negative weight edges, but no negative weight cycles.
-// Undir graph cannot have any -ve wt edges,such edge forms already a -ve cycle as we can move back and forth along that edge as long as you like.(Shortest path is undefined)
+// Undir graph cannot have any -ve wt edges,such edge forms already a -ve cycle as we can move back and forth along that edge.(Shortest path is undefined)
 // T=O(n^3)
 
 // if(dist[i][j]== inf) shortest path from 'i' to 'j' doesn't exists
