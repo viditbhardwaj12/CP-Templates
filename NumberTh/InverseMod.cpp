@@ -1,4 +1,5 @@
 // T=O(log(mod))
+// inv_mod condition: m is prime with a
 int pow(int a,int b,int m){
     int ans=1;
     while(b){
