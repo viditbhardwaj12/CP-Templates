@@ -1,10 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define int             long long
-#define pb              push_back
-#define all(v)          (v).begin(),(v).end()
-#define SPD_emergency   ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define pb     push_back
+#define all(v) (v).begin(),(v).end()
 
 class DSU{
 public:
@@ -35,22 +33,20 @@ public:
     }
 };
 
-signed main(){
-SPD_emergency
-
+int main(){
     int n,m; cin>>n>>m;
-    vector<vector<int> > l;
+    vector<vector<int> > edges;
     for(int i=0;i<m;i++){
         int x,y,wt; cin>>x>>y>>wt;
         x--,y--;
-        l.pb({wt,x,y});
+        edges.pb({wt,x,y});
     }
 
-    sort(all(l));
+    sort(all(edges));
 
     DSU u(n);
     int ans=0;
-    for(auto x:l){
+    for(auto x:edges){
         int from=x[1],to=x[2],wt=x[0];
         if(u.get(from)!=u.get(to)){     
             u.unite(from,to);
@@ -62,6 +58,3 @@ SPD_emergency
     
     return 0;
 }
-/*
-
-*/
