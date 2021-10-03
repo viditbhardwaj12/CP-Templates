@@ -1,3 +1,8 @@
+// LINEAR DIOPHANTINE EQ;
+// ax+by=g
+// x=> multiplicative modular inverse when 'mod' is not prime
+// g=> gcd(a,b)
+
 int extended_gcd(int a,int b,int& x,int& y){
     if(b==0){x=1,y=0; return a;}
     int x1,y1,g=extended_gcd(b,a%b,x1,y1);
