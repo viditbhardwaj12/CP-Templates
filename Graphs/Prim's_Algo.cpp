@@ -1,3 +1,6 @@
+// DENSE GRAPH:  T=O(V^2)
+// SPARSE GRAPH: T=O(Elog(V))
+    
 int prism_algo(vector<vector<pii> > &l,int n){
     vector<int> vis(n+1,0);
     int ans=0;
