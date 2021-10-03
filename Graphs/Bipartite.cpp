@@ -1,4 +1,9 @@
-void dfs(int node,int parent,int clr,map<int,int> &color,int *odd_cycle,vector<int> &vis,vector<vector<int> > &l){
+// A bipartite graph is a graph whose vertices can be divided into two disjoint sets so that every edge connects two vertices from different sets 
+// (i.e. there are no edges which connect vertices from the same set).
+// condition->Undir Graph & there should be no odd sycle present
+// T=O(V+E)
+
+void dfs(int node,int parent,int clr,vector<int> &color,int *odd_cycle,vector<int> &vis,vector<vector<int> > &l){
     vis[node]=1;
     color[node]=clr;
     for(auto child:l[node]){
@@ -9,21 +14,16 @@ void dfs(int node,int parent,int clr,map<int,int> &color,int *odd_cycle,vector<i
         }
     }
 }
-void bipartite(vector<vector<int> > &l,int n){
-    map<int,int> color;
+vector<int> bipartite(vector<vector<int> > &l,int n){
     int odd_cycle=0;
-    vector<int> vis(n+1,0);
+    vector<int> vis(n+1,0),color(n+1,0);
     for(int i=1;i<=n;i++){
         if(!vis[i]){
             dfs(i,0,1,color,&odd_cycle,vis,l);
         }
     }
 
-    if(odd_cycle){
-        cout<<"Odd Cycle Detected";
-    }else{
-        for(int i=1;i<=n;i++){
-            cout<<color[i]+1<<" ";
-        }
-    }
+    if(odd_cycle)
+        exit(0);
+    return color;
 }
