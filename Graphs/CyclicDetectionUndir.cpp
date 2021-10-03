@@ -1,8 +1,9 @@
-bool dfs(int node,int parent,vector<vector<int> > &l,vector<int> &vis){
+// lol Method
+bool cyclic(int node,int parent,vector<vector<int> > &l,vector<int> &vis){
     vis[node]=1;
     for(auto child:l[node]){
         if(!vis[child]){
-            if(dfs(child,node,l,vis)) return true;
+            if(cyclic(child,node,l,vis)) return true;
         }else{
             if(child!=parent) return true;  
         }
@@ -20,7 +21,7 @@ void dfs(int i,int &edges,int &nodes,vector<int> &vis,vector<vector<int> > &l){
             dfs(j,edges,nodes,vis,l);
     }
 }
-int is_cyclic(int n,vector<vector<int> > &l){
+bool cyclic(int n,vector<vector<int> > &l){
     vector<int> vis(n+1,0);
     for(int i=1;i<=n;i++){
         if(!vis[i]){
