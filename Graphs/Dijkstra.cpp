@@ -1,3 +1,8 @@
+// conditn:
+// Directed or undirected weighted graph & The weights of all edges are non-negative.
+// Finds the lengths of the shortest paths from a src vertix to all other vertices.
+// T=O(V+E*log(V)).
+    
 void dijkstra(int src,vector<vector<pii> > &l,int *dist,int n){
     for(int i=1;i<=n;i++) dist[i]=inf;
 
