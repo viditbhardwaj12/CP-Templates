@@ -1,3 +1,6 @@
+// We consider the case when 'm' is relatively small & n is a large value
+// T=O(log{base(m)}(n))
+
 int fact_mod(int n,int m){
     vector<int> f(m);
     f[0]=1;
