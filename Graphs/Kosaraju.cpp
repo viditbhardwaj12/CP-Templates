@@ -1,3 +1,7 @@
+// Dir Graph
+// STRONGLY CONNECTED COMPONENT is a maximal subset of vertices C such that any two vertices of this subset are reachable from each other
+// T=O(V+E)
+
 void dfs_top(int prnt,vector<int> &path,vector<int> &vis,vector<vector<int> > &l){
     vis[prnt]=1;
     for(auto ch:l[prnt]){
