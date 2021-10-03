@@ -1,3 +1,4 @@
+// T=O(nlog(log(n))) 
 vector<int> sieve(int n){ 
     vector<int> p;
     bool prime[n+1];  
