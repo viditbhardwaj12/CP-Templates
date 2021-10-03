@@ -1,3 +1,6 @@
+// MINIMUM SPANNING TREE: Subtree of graph which connects all vertices & has the least weight (sum of wt of all the edges is minimum) of all possible spanning trees.
+// T=O(Elog(V))
+    
 #include<bits/stdc++.h>
 using namespace std;
 
