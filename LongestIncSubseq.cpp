@@ -6,9 +6,7 @@ using namespace std;
 #define sz(x)            (int)(x.size()) 
 #define all(v)           (v).begin(),(v).end()
  
-/*__________________________________________________________*/
- 
-signed main(){
+int main(){
     
     int n; cin>>n;
     vector<int> a(n);
