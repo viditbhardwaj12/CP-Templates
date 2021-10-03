@@ -1,3 +1,6 @@
+// LONGEST MATCHING PREFIX-SUFFIX
+// T=O(n)
+
 vector<int> kmp(string str){
     int n=str.size();
     vector<int> lps(n+1,0);
