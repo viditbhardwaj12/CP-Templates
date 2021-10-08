@@ -3,9 +3,8 @@
 // Finds the lengths of the shortest paths from a src vertix to all other vertices.
 // T=O(V+E*log(V)).
     
-void dijkstra(int src,vector<vector<pii> > &l,int *dist,int n){
-    for(int i=1;i<=n;i++) dist[i]=inf;
-
+void dijkstra(int src,vector<vector<pii> > &l,vector<int> &dist,int n){
+    fill(all(dist),inf);
     set<pii> s;
     dist[src]=0,s.insert({0,src});
     while(!s.empty()){
