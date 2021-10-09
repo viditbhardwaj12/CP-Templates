@@ -21,7 +21,7 @@ void dfs(int i,int &edges,int &nodes,vector<int> &vis,vector<vector<int> > &l){
             dfs(j,edges,nodes,vis,l);
     }
 }
-bool cyclic(int n,vector<vector<int> > &l){
+bool cyclic(vector<vector<int> > &l,int n){
     vector<int> vis(n+1,0);
     for(int i=1;i<=n;i++){
         if(!vis[i]){
