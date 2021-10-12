@@ -35,7 +35,7 @@ vector<int> prime_fact(int n){
 
     for(int i=3;i*i<=n;i+=2){
         if(n%i==0){
-            unique_p.pb(i)
+            unique_p.pb(i);
             while(n%i==0){
                 n/=i,p.pb(i);
             }
