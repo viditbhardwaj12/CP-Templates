@@ -29,8 +29,11 @@ vector<int> cnt_prime_div(int n){
 // 0(sqrt(n)/2)
 vector<int> prime_fact(int n){
     vector<int> p,unique_p;
-    while(n%2==0){
-        unique_p.pb(2),p.pb(2),n/=2;
+    if(n%2==0){
+        unique_p.pb(2);
+        while(n%2==0){
+            p.pb(2),n/=2;
+        }
     }
 
     for(int i=3;i*i<=n;i+=2){
