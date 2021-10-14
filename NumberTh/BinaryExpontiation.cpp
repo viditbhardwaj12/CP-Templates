@@ -1,5 +1,4 @@
 // T=O(log(b))
-// [BINARY EXPONENTIATION]
 int pow(int a,int b,int m){
     int ans=1;
     while(b){
