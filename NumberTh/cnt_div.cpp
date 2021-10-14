@@ -26,7 +26,8 @@ vector<int> cnt_prime_div(int n){
 }
   
 // This will give prime factorization of 'n'
-// 0(sqrt(n)/2)
+// 0(sqrt(n)/log(n))
+// count of prime numbers is from 1 to n => (n/log(n))
 vector<int> prime_fact(int n){
     vector<int> p,unique_p;
     if(n%2==0){
