@@ -1,6 +1,6 @@
-mob[1] = 1
-mob[i] = 0      [if 'i' is a square of prime factor]
-mob[i] = (-1)^k ['i' is product of 'k' distinct primes]
+// mob[1] = 1
+// mob[i] = 0      [if 'i' is a square of prime factor]
+// mob[i] = (-1)^k ['i' is product of 'k' distinct primes]
 
 vector<int> least_prime_fact(int n){
     vector<int> lpf(n,0);
