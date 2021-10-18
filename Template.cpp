@@ -20,7 +20,7 @@ using namespace __gnu_pbds;
 #define sz(x)            (int)(x.size()) 
 #define mset(a,b)        memset(a,b,sizeof(a))
 #define all(v)           (v).begin(),(v).end()
-#define zerobits(x)      __builtin_ctzll(x)
+#define setpos(x)        63ll-__builtin_clzll(x)
 #define setbits(x)       __builtin_popcountll(x)
 #define SPD_emergency    ios_base::sync_with_stdio(false); cin.tie(NULL);
 #define ps(x,y)          fixed<<setprecision(y)<<x
