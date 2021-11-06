@@ -1,6 +1,7 @@
 // A bipartite graph is a graph whose vertices can be divided into two disjoint sets so that every edge connects two vertices from different sets 
 // (i.e. there are no edges which connect vertices from the same set).
 // condition->Undir Graph & there should be no odd sycle present
+// The min(number of black, number of white) nodes is <= n / 2.
 // T=O(V+E)
 
 void dfs(int node,int parent,int clr,vector<int> &color,int *odd_cycle,vector<int> &vis,vector<vector<int> > &l){
