@@ -26,6 +26,8 @@ using namespace __gnu_pbds;
 #define ps(x,y)          fixed<<setprecision(y)<<x
 #define YES              cout<<"YES"<<endl
 #define NO               cout<<"NO"<<endl
+#define Yes              cout<<"Yes"<<endl
+#define No               cout<<"No"<<endl
 
 template<typename T>    // *s.find_by_order(idx) & s.order_of_key(val)
 using pbds=tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>;
