@@ -28,7 +28,7 @@ using namespace __gnu_pbds;
 #define NO               cout<<"NO"<<endl
 
 template<typename T>    // *s.find_by_order(idx) & s.order_of_key(val)
-using pbds=tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>; 
+using pbds=tree<T,null_type,less<T>,rb_tree_tag,tree_order_statistics_node_update>;
 template<typename T> using min_pq=priority_queue<T,vector<T>,greater<T> >;
 template<typename T> using max_pq=priority_queue<T>;
 typedef pair<int,int> pii;
@@ -44,14 +44,25 @@ void _print(double x){cerr<<x;}
 void _print(char x){cerr<<x;}
 void _print(string x){cerr<<x;}
 
-template<class T1,class T2> void _print(pair<T1,T2> p);
-template<class T> void _print(vector<T> T2);
+template<class T> void _print(vector<T> v);
+template<class T> void _print(deque<T> dq);
 template<class T> void _print(set<T> s);
 template<class T> void _print(multiset<T> s);
+template<class T> void _print(queue<T> q);
+template<class T> void _print(min_pq<T> q);
+template<class T> void _print(max_pq<T> q);
+template<class T> void _print(stack<T> st);
+template<class T1,class T2> void _print(pair<T1,T2> p);
 template<class T1,class T2> void _print(map<T1,T2> mp);
-template<class T> void _print(vector<T> T2){int c=0; cerr<<"["; for(T x:T2){cerr<<(c++?",":""),_print(x);}cerr<<"]";}
+template<class T> void _print(pbds<T> s);
+template<class T> void _print(vector<T> v){int c=0; cerr<<"["; for(T x:v){cerr<<(c++?",":""),_print(x);}cerr<<"]";}
+template<class T> void _print(deque<T> dq){int c=0; cerr<<"["; for(T x:dq){cerr<<(c++?",":""),_print(x);}cerr<<"]";}
 template<class T> void _print(set<T> s){int c=0; cerr<<"["; for(T x:s){cerr<<(c++?",":""),_print(x);}cerr<<"]";}
 template<class T> void _print(multiset<T> s){int c=0; cerr<<"["; for(T x:s){cerr<<(c++?",":""),_print(x);}cerr << "]";}
+template<class T> void _print(queue<T> q){int c=0; cerr<<"["; while(!q.empty()){cerr<<(c++?",":""),_print(q.front()),q.pop();}cerr<<"]";}
+template<class T> void _print(min_pq<T> q){int c=0; cerr<<"["; while(!q.empty()){cerr<<(c++?",":""),_print(q.top()),q.pop();}cerr<<"]";}
+template<class T> void _print(max_pq<T> q){int c=0; cerr<<"["; while(!q.empty()){cerr<<(c++?",":""),_print(q.top()),q.pop();}cerr<<"]";}
+template<class T> void _print(stack<T> st){int c=0; cerr<<"["; while(!st.empty()){cerr<<(c++?",":""),_print(st.top()),st.pop();}cerr<<"]";}
 template<class T1,class T2> void _print(pair<T1,T2> p){cerr<<"{"; _print(p.ff); cerr<<","; _print(p.ss); cerr<<"}";}
 template<class T1,class T2> void _print(map<T1,T2> mp){int c=0; cerr<<"["; for(auto x:mp){cerr<<(c++?",":""),_print(x);}cerr<<"]";}
 void _print(pbds<int> s){int c=0; cerr<<"["; for(auto x:s){cerr<<(c++?",":""),_print(x);}cerr<<"]";}
@@ -70,7 +81,7 @@ SPD_emergency
 #endif
 
 TC{
-    
+
 }
 
     return 0;
