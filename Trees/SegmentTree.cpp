@@ -9,7 +9,6 @@ public:
         n=sz(arr);
         tree.resize(4*n);
         fill(all(tree),node());
-
         BuildST(0,n-1,1);
     }
     void BuildST(int s,int e,int indx){
@@ -29,10 +28,8 @@ public:
             return;
         }
         int mid=(s+e)/2;
-        if(mid>=pos) 
-            UpdateIdx(s,mid,2*indx,pos,u);
-        else 
-            UpdateIdx(mid+1,e,2*indx+1,pos,u);
+        if(mid>=pos) UpdateIdx(s,mid,2*indx,pos,u);
+        else UpdateIdx(mid+1,e,2*indx+1,pos,u);
         tree[indx].merge(tree[2*indx],tree[2*indx+1]);
     }
     void indx_update(int pos,int val){
@@ -61,22 +58,22 @@ class node1{
 public:
     int val;
     node1(){
-        val=0;  // may change
+        val=0;    // may change
     }
     node1(int n){   // Actual Node
-        val=n;  // may change
+        val=n;    // may change
     }
-    void merge(node1 a,node1 b){    // Merge on two child nodes
-        val=(a.val+b.val);  // may change
+    void merge(node1 a,node1 b){    
+        val=(a.val+b.val);    // perform merge query here
     }
 };
 class update1{
 public:
     int num;
-    update1(int n){     // Actual update
-        num=n;  // may change 
+    update1(int n){    // Actual update
+        num=n;    // may change 
     }
-    void apply(node1 &a){   // Apply update to given node
-        a.val=num;  // may change
+    void apply(node1 &a){   
+        a.val=num;    // perform update operation here
     }
 };
