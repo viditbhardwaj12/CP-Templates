@@ -1,3 +1,5 @@
+// 0-based index segTree
+// used only for point update queries
 template<typename node,typename update>
 class SegTree{
 public:
