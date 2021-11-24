@@ -1,5 +1,5 @@
 // 0-based index segTree
-// used only for point update queries
+// used only for indx update & queries
 template<typename node,typename update>
 class SegTree{
 public:
@@ -33,7 +33,7 @@ public:
         else UpdateIdx(mid+1,e,2*indx+1,pos,u);
         tree[indx].merge(tree[2*indx],tree[2*indx+1]);
     }
-    void indx_update(int pos,int val){
+    void update_indx(int pos,int val){
         update u=update(val);
         UpdateIdx(0,n-1,1,pos,u);
     }
@@ -50,7 +50,7 @@ public:
         ans.merge(left,right);
         return ans;
     }
-    node make_query(int l,int r){
+    node get_indx(int l,int r){
         return Query(0,n-1,1,l,r);
     }
 };
