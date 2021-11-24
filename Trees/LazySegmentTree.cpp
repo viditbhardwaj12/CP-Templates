@@ -1,6 +1,8 @@
 // 0-indx based segTree
-// update_range,update_indx
-// get_indx, get_range
+// Literally used for everything
+// updates indx & range
+// gives indx & range queries
+
 template<typename node,typename update>
 class SegTree{
 public:
