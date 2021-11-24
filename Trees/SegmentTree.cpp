@@ -5,8 +5,7 @@ public:
     vector<int> a;
     int n;
     SegTree(vector<int> &arr){
-        a=arr;
-        n=sz(arr);
+        a=arr,n=sz(arr);
         tree.resize(4*n);
         fill(all(tree),node());
         BuildST(0,n-1,1);
