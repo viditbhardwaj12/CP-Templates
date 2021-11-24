@@ -50,8 +50,8 @@ public:
         ans.merge(left,right);
         return ans;
     }
-    node get_indx(int l,int r){
-        return Query(0,n-1,1,l,r);
+    int get_indx(int l,int r){
+        return Query(0,n-1,1,l,r).val;
     }
 };
 
