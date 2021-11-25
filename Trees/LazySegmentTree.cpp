@@ -1,5 +1,4 @@
 // 0-indx based segTree
-// Literally used for everything
 // updates indx & range
 // gives indx & range queries
 
@@ -103,7 +102,7 @@ public:
         else return IndxQuery(mid+1,e,2*indx+1,pos);
     }
     int get_indx(int pos){
-        return IndxQuery(0,n-1,1,pos).val;      
+        return IndxQuery(0,n-1,1,pos);      
     }
 
     node RangeQuery(int s,int e,int indx,int l,int r){
