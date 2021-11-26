@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+int inv_mod_extended(int a,int m){ 
+    int x,y; extended_gcd(a,m,x,y);
+    return x;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>invmodextended</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
