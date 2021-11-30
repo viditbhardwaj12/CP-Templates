@@ -29,6 +29,51 @@ public:
         tree[indx].merge(tree[2*indx],tree[2*indx+1]);
     }
 
+    void UpdateIdx(int s,int e,int indx,int pos,update &u){
+        if(lazy[indx].val){
+            tree[indx].merge(tree[indx],lazy[indx].val*(s-e+1));
+            if(s!=e){
+                lazy[2*indx].merge(lazy[indx],lazy[2*indx]);
+                lazy[2*indx+1].merge(lazy[indx],lazy[2*indx+1]);
+            }
+            lazy[indx]=0;
+        }
+
+        if(s==e){
+            u.apply(tree[indx]);
+            return;
+        }
+        int mid=(s+e)/2;
+        if(mid>=pos) UpdateIdx(s,mid,2*indx,pos,u);
+        else UpdateIdx(mid+1,e,2*indx+1,pos,u);
+        tree[indx].merge(tree[2*indx],tree[2*indx+1]);
+    }
+    void update_indx(int pos,int val){
+        update u=update(val);
+        UpdateIdx(0,n-1,1,pos,u);
+    }
+
+    int IndxQuery(int s,int e,int indx,int pos){
+        if(lazy[indx].val){
+            tree[indx].merge(tree[indx],lazy[indx].val*(e-s+1));
+            if(s!=e){
+                lazy[2*indx].merge(lazy[2*indx],lazy[indx]);
+                lazy[2*indx+1].merge(lazy[2*indx+1],lazy[indx]);
+            }
+            lazy[indx]=0;
+        }
+
+        if(s>pos or e<pos) return 0;
+        if(s==e and s==pos) return tree[indx].val;
+
+        int mid=(s+e)/2;
+        if(pos<=mid) return IndxQuery(s,mid,2*indx,pos);
+        else return IndxQuery(mid+1,e,2*indx+1,pos);
+    }
+    int get_indx(int pos){
+        return IndxQuery(0,n-1,1,pos);      
+    }
+
     void RangeUpdate(int s,int e,int indx,int qs,int qe,int val){
         if(lazy[indx].val){
             tree[indx].merge(tree[indx],lazy[indx].val*(s-e+1));
@@ -57,51 +102,6 @@ public:
     }
     void update_range(int l,int r,int val){
         RangeUpdate(0,n-1,1,l,r,val);
-    }
-
-    int IndxQuery(int s,int e,int indx,int pos){
-        if(lazy[indx].val){
-            tree[indx].merge(tree[indx],lazy[indx].val*(e-s+1));
-            if(s!=e){
-                lazy[2*indx].merge(lazy[2*indx],lazy[indx]);
-                lazy[2*indx+1].merge(lazy[2*indx+1],lazy[indx]);
-            }
-            lazy[indx]=0;
-        }
-
-        if(s>pos or e<pos) return 0;
-        if(s==e and s==pos) return tree[indx].val;
-
-        int mid=(s+e)/2;
-        if(pos<=mid) return IndxQuery(s,mid,2*indx,pos);
-        else return IndxQuery(mid+1,e,2*indx+1,pos);
-    }
-    int get_indx(int pos){
-        return IndxQuery(0,n-1,1,pos);      
-    }
-
-    void UpdateIdx(int s,int e,int indx,int pos,update &u){
-        if(lazy[indx].val){
-            tree[indx].merge(tree[indx],lazy[indx].val*(s-e+1));
-            if(s!=e){
-                lazy[2*indx].merge(lazy[indx],lazy[2*indx]);
-                lazy[2*indx+1].merge(lazy[indx],lazy[2*indx+1]);
-            }
-            lazy[indx]=0;
-        }
-
-        if(s==e){
-            u.apply(tree[indx]);
-            return;
-        }
-        int mid=(s+e)/2;
-        if(mid>=pos) UpdateIdx(s,mid,2*indx,pos,u);
-        else UpdateIdx(mid+1,e,2*indx+1,pos,u);
-        tree[indx].merge(tree[2*indx],tree[2*indx+1]);
-    }
-    void update_indx(int pos,int val){
-        update u=update(val);
-        UpdateIdx(0,n-1,1,pos,u);
     }
 
     node RangeQuery(int s,int e,int indx,int l,int r){
