@@ -59,6 +59,27 @@ public:
         RangeUpdate(0,n-1,1,l,r,val);
     }
 
+    int IndxQuery(int s,int e,int indx,int pos){
+        if(lazy[indx].val){
+            tree[indx].merge(tree[indx],lazy[indx].val*(e-s+1));
+            if(s!=e){
+                lazy[2*indx].merge(lazy[2*indx],lazy[indx]);
+                lazy[2*indx+1].merge(lazy[2*indx+1],lazy[indx]);
+            }
+            lazy[indx]=0;
+        }
+
+        if(s>pos or e<pos) return 0;
+        if(s==e and s==pos) return tree[indx].val;
+
+        int mid=(s+e)/2;
+        if(pos<=mid) return IndxQuery(s,mid,2*indx,pos);
+        else return IndxQuery(mid+1,e,2*indx+1,pos);
+    }
+    int get_indx(int pos){
+        return IndxQuery(0,n-1,1,pos);      
+    }
+
     void UpdateIdx(int s,int e,int indx,int pos,update &u){
         if(lazy[indx].val){
             tree[indx].merge(tree[indx],lazy[indx].val*(s-e+1));
@@ -83,28 +104,6 @@ public:
         UpdateIdx(0,n-1,1,pos,u);
     }
 
-    int IndxQuery(int s,int e,int indx,int pos){
-        if(lazy[indx].val){
-            tree[indx].merge(tree[indx],lazy[indx].val*(e-s+1));
-            if(s!=e){
-                lazy[2*indx].merge(lazy[2*indx],lazy[indx]);
-                lazy[2*indx+1].merge(lazy[2*indx+1],lazy[indx]);
-            }
-            lazy[indx]=0;
-        }
-
-        if(s>pos or e<pos) return 0;
-
-        if(s==e and s==pos) return tree[indx].val;
-
-        int mid=(s+e)/2;
-        if(pos<=mid) return IndxQuery(s,mid,2*indx,pos);
-        else return IndxQuery(mid+1,e,2*indx+1,pos);
-    }
-    int get_indx(int pos){
-        return IndxQuery(0,n-1,1,pos);      
-    }
-
     node RangeQuery(int s,int e,int indx,int l,int r){
         if(lazy[indx].val){
             tree[indx].merge(tree[indx],lazy[indx].val*(e-s+1));
@@ -115,10 +114,8 @@ public:
             lazy[indx]=0;
         }
 
-        if(e<l || s>r)
-            return node();
-        if(s>=l && e<=r)
-            return tree[indx];
+        if(e<l || s>r) return node();
+        if(s>=l && e<=r) return tree[indx];
 
         int mid=(s+e)/2;
         node ans,left,right;
