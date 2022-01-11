@@ -44,6 +44,7 @@ typedef pair<int,int> pii;
 void _print(int x){cerr<<x;}
 void _print(double x){cerr<<x;}
 void _print(char x){cerr<<x;}
+void _print(bool x){cerr<<x;}
 void _print(string x){cerr<<x;}
 
 template<class T> void _print(vector<T> v);
