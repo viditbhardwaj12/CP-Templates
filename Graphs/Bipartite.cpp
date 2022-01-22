@@ -4,13 +4,13 @@
 // The min(number of black, number of white) nodes is <= n / 2.
 // T=O(V+E)
 
-void dfs(int node,int clr,vector<int> &color,int &odd_cycle,vector<int> &vis,vector<vector<int> > &l){
-    vis[node]=1,color[node]=clr;
-    for(auto child:l[node]){
+void dfs(int parent,int clr,vector<int> &color,int &odd_cycle,vector<int> &vis,vector<vector<int> > &l){
+    vis[parent]=1,color[parent]=clr;
+    for(auto child:l[parent]){
         if(!vis[child]){
             dfs(child,1-clr,color,odd_cycle,vis,l);
         }else{
-            if(color[child]==clr) odd_cycle=1;
+            if(color[child]==color[parent]) odd_cycle=1;
         }
     }
 }
@@ -27,4 +27,3 @@ vector<int> bipartite(vector<vector<int> > &l,int n){
         exit(0);
     return color;
 }
-
