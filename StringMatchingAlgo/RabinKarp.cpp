@@ -1,4 +1,4 @@
-// gives indx of all occurrences string 'str' in string 'pat'
+// gives indx of all occurrences string 'pat' in string 'str'
 // T=O(|str|+|pat|)
 int mul_mod(int a,int b,int m){return ((a%m)*(b%m))%m;}
 int add_mod(int a,int b,int m){return (a+b)%m;}
