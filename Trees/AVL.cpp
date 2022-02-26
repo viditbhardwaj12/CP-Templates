@@ -49,76 +49,63 @@ public:
     }
 };
 
-class AVL{
-private:
-    int height(node *root){
-        return ((root==NULL)?(0):(root->ht));
+int height(node *root){
+    return ((root==NULL)?(0):(root->ht));
+}
+
+int bf(node *root){
+    return (height(root->left)-height(root->right));
+}
+
+node *l_rotate(node *root){
+    node *root_r=root->right;
+    node *root_r_l=(root->right)->left;
+
+    root_r->left=root;
+    root->right=root_r_l;
+
+    root->ht=1+max(height(root->left),height(root->right));
+    root_r->ht=1+max(height(root_r->left),height(root_r->right));
+    
+    return root_r;    
+}
+
+node *r_rotate(node *root){
+    node *root_l=root->left;
+    node *root_l_r=(root->left)->right;
+
+    root_l->right=root;
+    root->left=root_l_r;
+
+    root->ht=1+max(height(root->left),height(root->right));
+    root_l->ht=1+max(height(root_l->left),height(root_l->right));
+
+    return root_l;
+}
+
+node *insert(node *root,int key){
+    if(root==NULL) return new node(key);
+    if(key>root->data) root->right=insert(root->right,key);
+    else if(key<root->data) root->left=insert(root->left,key);
+    else return root;
+
+    root->ht=1+max(height(root->right),height(root->left));
+
+    if(bf(root)==(2) && key<(root->left)->data)    // LL Case
+        return r_rotate(root);
+    if(bf(root)==(-2) && key>(root->right)->data)  // RR Case
+        return l_rotate(root);
+    if(bf(root)==(2) && key>(root->left)->data){    // LR Case
+        root->left=l_rotate(root->left);
+        return r_rotate(root);
+    }
+    if(bf(root)==(-2) && key<(root->right)->data){  // RL Case
+        root->right=r_rotate(root->right);
+        return l_rotate(root);
     }
 
-    int bf(node *root){
-        return (height(root->left)-height(root->right));
-    }
-
-    node *l_rotate(node *root){
-        node *root_r=root->right;
-        node *root_r_l=(root->right)->left;
-
-        root_r->left=root;
-        root->right=root_r_l;
-
-        root->ht=1+max(height(root->left),height(root->right));
-        root_r->ht=1+max(height(root_r->left),height(root_r->right));
-        
-        return root_r;    
-    }
-
-    node *r_rotate(node *root){
-        node *root_l=root->left;
-        node *root_l_r=(root->left)->right;
-
-        root_l->right=root;
-        root->left=root_l_r;
-
-        root->ht=1+max(height(root->left),height(root->right));
-        root_l->ht=1+max(height(root_l->left),height(root_l->right));
-
-        return root_l;
-    }
-
-    node *insert(node *root,int key){
-        if(root==NULL) return new node(key);
-        if(key>root->data) root->right=insert(root->right,key);
-        else if(key<root->data) root->left=insert(root->left,key);
-        else return root;
-
-        root->ht=1+max(height(root->right),height(root->left));
-
-        if(bf(root)==(2) && key<(root->left)->data)    // LL Case
-            return r_rotate(root);
-        if(bf(root)==(-2) && key>(root->right)->data)  // RR Case
-            return l_rotate(root);
-        if(bf(root)==(2) && key>(root->left)->data){    // LR Case
-            root->left=l_rotate(root->left);
-            return r_rotate(root);
-        }
-        if(bf(root)==(-2) && key<(root->right)->data){  // RL Case
-            root->right=r_rotate(root->right);
-            return l_rotate(root);
-        }
-
-        return root;
-    }    
-public:
-    node *root=NULL;
-    AVL(vector<int> nodes){
-        for(auto n:nodes){
-            root=insert(root,n);
-        }
-    }
-    node *ret(){
-        return root;
-    }
-};
+    return root;
+}
 
 void preorder(node *root){
     if(root==NULL) return;
@@ -130,18 +117,18 @@ void preorder(node *root){
 int main(){
 
     int n; cin>>n;
-    vector<int> a(n);
+    node *root=NULL;
     for(int i=0;i<n;i++){
-        cin>>a[i];
+        int x; cin>>x;
+        root=insert(root,x);
     }
-
-    AVL tree(a);
-    node *root=tree.ret();
 
     preorder(root);
 
     return 0;
 }
 /*
-i/p=> 9 20 25 30 10 5 15 27 19 16
+i/p=>
+9
+20 25 30 10 5 15 27 19 16
 */
